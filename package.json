@@ -1,0 +1,12 @@
+{
+  "name": "movie-database-api",
+  "version": "1.0.0",
+  "description": "A simple practice project in api and databases.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "DistantDig",
+  "license": "ISC"
+}
