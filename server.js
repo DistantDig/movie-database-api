@@ -7,9 +7,11 @@ const mysql = require('mysql2');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 // Connect to database
 const db = mysql.createConnection(
@@ -23,6 +25,7 @@ const db = mysql.createConnection(
     },
     console.log(`Connected to the courses_db database.`)
 );
+
 
 // Api GET calls
 app.get('/api/movies', (req, res) => {
@@ -39,10 +42,13 @@ app.get('/api/movie-reviews', (req, res) => {
     });
 });
 
+
 // Api POST, PUT and DELETE calls
 app.post('/api/add-movie', (req, res) => {
     console.log(`${req.method} request received to add movie`);
-    //code here
+    db.query('INSERT INTO movies (name) VALUES ?', [req.body], function (err, results) {
+        res.json(results);
+    });
 });
 
 app.put('/api/review/:id', (req, res) => {
@@ -55,8 +61,8 @@ app.delete('/api/movie/:id', (req, res) => {
     //code here
 });
 
+
 // Listening on the PORT number
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-  
