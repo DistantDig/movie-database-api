@@ -2,12 +2,24 @@
 const express = require('express');
 const path = require('path');
 const util = require('util');
+const mysql = require('mysql2');
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
+// Connect to database
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // MySQL username,
+      user: 'root',
+      // MySQL password
+      password: 'Password',
+      database: 'movies_db'
+    },
+    console.log(`Connected to the courses_db database.`)
+  );
 
 // Api GET calls
 app.get('/api/movies', (req, res) => {

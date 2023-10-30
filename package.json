@@ -8,5 +8,8 @@
     "start": "node server.js"
   },
   "author": "DistantDig",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.6.2"
+  }
 }
